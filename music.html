@@ -1,0 +1,306 @@
+<html>
+<head>
+  <title>Music commands</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet"/>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #0d0d0d;
+      color: #e0e0e0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #111;
+    }
+    .navbar .logo {
+      display: flex;
+      align-items: center;
+    }
+    .navbar .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+    .navbar .logo span {
+      font-size: 20px;
+      font-weight: 500;
+    }
+    .navbar .invite-button {
+      background-color: #7289da;
+      color: #fff;
+      padding: 5px 15px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      margin-left: 10px;
+    }
+    .content {
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .content h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+    .commands-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #1c1c1c;
+      padding: 10px; /* Réduction de la taille du padding */
+      border-radius: 10px;
+      margin: 20px auto;
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none; /* Firefox */
+      max-width: 30%; /* Réduction de la largeur maximale */
+    }
+    .commands-bar::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    .commands-bar .command {
+      display: inline-block;
+      align-items: center;
+      padding: 5px 8px; /* Réduction du padding des boutons */
+      margin: 0 3px; /* Réduction de la marge des boutons */
+      color: #ffffff;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .commands-bar .command:hover {
+      transform: scale(1.1);
+      color: #7289da; /* Changement de couleur au survol */
+    }
+    .commands {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .command-card {
+      background-color: #1a1a1a;
+      border-radius: 20px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      border: 1px solid #333;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: left;
+      position: relative;
+    }
+    .command-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.5);
+    }
+    .command-card h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #ffffff;
+      font-weight: 400;
+    }
+    .command-card p {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #b0b0b0;
+    }
+    .command-card .separator {
+      border-top: 1px solid #333;
+      margin: 20px 0;
+    }
+    .command-card .details {
+      display: flex;
+      flex-direction: column;
+      font-size: 14px;
+      margin-top: 20px;
+    }
+    .command-card .details div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .command-card .details div span {
+      margin-left: 5px;
+      color: #e0e0e0;
+    }
+    .footer {
+      margin-top: 50px;
+      text-align: center;
+      color: #b0b0b0;
+    }
+    .footer a {
+      color: #7289da;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    #searchBar {
+      position: absolute;
+      top: 135px;
+      right: 20px; /* Ajustez cette valeur pour le positionnement à droite */
+      width: 200px;
+      padding: 8px;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 1px solid #555;
+      background-color: #2a2a2a;
+      color: #e0e0e0;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+    #searchBar::placeholder {
+      color: #a0a0a0;
+    }
+    #searchBar:focus {
+      border-color: #008cff;
+      box-shadow: 0 0 5px rgba(0, 140, 255, 0.5);
+    }
+
+    /* Styles responsives */
+    @media (max-width: 768px) {
+      #searchBar {
+        width: 150px; /* Réduire la largeur sur les petits écrans */
+        top: 100px; /* Ajustez cette valeur si nécessaire */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="logo">
+      <img alt="Logo" height="40" src="https://images.ctfassets.net/ub3bwfd53mwy/5WFv6lEUb1e6kWeP06CLXr/acd328417f24786af98b1750d90813de/4_Image.jpg?w=750" width="40"/>
+      <a href="index.html" style="text-decoration: none; color: inherit;">
+        <span>Gato</span>
+      </a>
+    </div>
+    <a class="invite-button" href="https://discord.com/oauth2/authorize?client_id=1290741756182396980&permissions=8&integration_type=0&scope=bot">Invite</a>
+  </div>
+
+  <div class="content">
+    <h1><i class="fas fa-terminal"></i> Music</h1>
+    <input type="text" id="searchBar" placeholder="Search commands..." onkeyup="filterCommands()">
+
+    <!-- Command Categories Bar -->
+    <div class="commands-bar">
+      <div class="command" onclick="location.href='index.html'"><i class="fas fa-hashtag"></i> All</div>
+      <div class="command" onclick="location.href='moderation.html'"><i class="fas fa-gavel"></i> Moderation</div>
+      <div class="command" onclick="location.href='fun.html'"><i class="fas fa-smile"></i> Fun</div>
+      <div class="command" onclick="location.href='utilities.html'"><i class="fas fa-tools"></i> Utilities</div>
+      <div class="command" onclick="location.href='music.html'"><i class="fas fa-music"></i> Music</div>
+      <div class="command" onclick="location.href='socials.html'"><i class="fas fa-user-friends"></i> Socials</div>
+    </div>
+
+    <div class="commands">
+        <div class="command-card">
+            <h2>play</h2>
+            <p>Play a selected song.</p>
+            <div class="separator"></div>
+            <div class="details">
+              <div class="aliases"><span>Aliases:</span><span>N/A</span></div>
+              <div class="permissions"><span>Permissions:</span><span>N/A</span></div>
+              <div class="arguments"><span>Arguments:</span><span>N/A</span></div>
+            </div>
+          </div>
+    
+          <div class="command-card">
+            <h2>skip</h2>
+            <p>Skip a song.</p>
+            <div class="separator"></div>
+            <div class="details">
+              <div class="aliases"><span>Aliases:</span><span>N/A</span></div>
+              <div class="permissions"><span>Permissions:</span><span>N/A</span></div>
+              <div class="arguments"><span>Arguments:</span><span>N/A</span></div>
+            </div>
+          </div>
+    
+          <div class="command-card">
+            <h2>pause</h2>
+            <p>Pause a song.</p>
+            <div class="separator"></div>
+            <div class="details">
+              <div class="aliases"><span>Aliases:</span><span>N/A</span></div>
+              <div class="permissions"><span>Permissions:</span><span>N/A</span></div>
+              <div class="arguments"><span>Arguments:</span><span>N/A</span></div>
+            </div>
+          </div>
+    
+          <div class="command-card">
+            <h2>resume</h2>
+            <p>Resume the paused song.</p>
+            <div class="separator"></div>
+            <div class="details">
+              <div class="aliases"><span>Aliases:</span><span>N/A</span></div>
+              <div class="permissions"><span>Permissions:</span><span>N/A</span></div>
+              <div class="arguments"><span>Arguments:</span><span>N/A</span></div>
+            </div>
+          </div>
+    
+          <div class="command-card">
+            <h2>queue</h2>
+            <p>Show the queue song.</p>
+            <div class="separator"></div>
+            <div class="details">
+              <div class="aliases"><span>Aliases:</span><span>N/A</span></div>
+              <div class="permissions"><span>Permissions:</span><span>N/A</span></div>
+              <div class="arguments"><span>Arguments:</span><span>N/A</span></div>
+            </div>
+          </div>
+    
+          <div class="command-card">
+            <h2>clear</h2>
+            <p>Clear the queue.</p>
+            <div class="separator"></div>
+            <div class="details">
+              <div class="aliases"><span>Aliases:</span><span>N/A</span></div>
+              <div class="permissions"><span>Permissions:</span><span>N/A</span></div>
+              <div class="arguments"><span>Arguments:</span><span>N/A</span></div>
+            </div>
+          </div>
+    
+          <div class="command-card">
+            <h2>stop</h2>
+            <p>Stop the song.</p>
+            <div class="separator"></div>
+            <div class="details">
+              <div class="aliases"><span>Aliases:</span><span>N/A</span></div>
+              <div class="permissions"><span>Permissions:</span><span>N/A</span></div>
+              <div class="arguments"><span>Arguments:</span><span>N/A</span></div>
+            </div>
+          </div>
+    
+          <div class="command-card">
+            <h2>remove</h2>
+            <p>Remove the song in the queue.</p>
+            <div class="separator"></div>
+            <div class="details">
+              <div class="aliases"><span>Aliases:</span><span>N/A</span></div>
+              <div class="permissions"><span>Permissions:</span><span>N/A</span></div>
+              <div class="arguments"><span>Arguments:</span><span>N/A</span></div>
+            </div>
+          </div>
+
+  </div>
+
+  <div class="footer">
+    <p>© 2024 Gato | <a href="privacy-policy.html" target="_blank">Privacy policy</a> | <a href="terms.html" target="_blank">Terms of service</a></p>
+  </div>
+
+  <script>
+    function filterCommands() {
+      const input = document.getElementById('searchBar');
+      const filter = input.value.toLowerCase();
+      const cards = document.querySelectorAll('.command-card');
+
+      cards.forEach(card => {
+        const title = card.querySelector('h2').textContent.toLowerCase();
+        card.style.display = title.includes(filter) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
